@@ -1,3 +1,3 @@
 export const ICONS = {
-  chevron_right: "chevron-right",
+  magnifyingGlass: require("../assets/icons/magnifying-glass.png"),
 };

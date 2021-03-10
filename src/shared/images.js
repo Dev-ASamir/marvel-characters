@@ -1,4 +1,4 @@
 export const IMAGES = {
-  /** SPLASH IMAGES */
   splash: require("../assets/images/splash.png"),
+  logo: require("../assets/images/logo.png"),
 };
