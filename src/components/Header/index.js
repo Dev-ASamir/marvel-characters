@@ -1,14 +1,27 @@
-import propTypes from "prop-types";
 import React from "react";
-import { Text, View, TouchableOpacity, Image } from "react-native";
+import {
+  Text,
+  View,
+  ViewPropTypes,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import { ICONS, IMAGES } from "../../shared";
 import { Trans } from "../../utils";
 import styles from "./styles";
 import { applyLanguage } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 
-const Header = ({ textStyle, containerStyle, iconStyle, imageStyle }) => {
+export const Header = ({
+  textStyle,
+  containerStyle,
+  iconStyle,
+  imageStyle,
+}) => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
+
   const { lang } = useSelector((state) => ({
     lang: state.lang,
   }));
@@ -26,19 +39,19 @@ const Header = ({ textStyle, containerStyle, iconStyle, imageStyle }) => {
         source={IMAGES.logo}
         resizeMode={"contain"}
       />
-      <Image
-        style={[styles.icon, iconStyle]}
-        source={ICONS.magnifyingGlass}
-        resizeMode={"contain"}
-      />
+      <TouchableOpacity onPress={() => navigation.navigate("Search")}>
+        <Image
+          style={[styles.icon, iconStyle]}
+          source={ICONS.magnifyingGlass}
+          resizeMode={"contain"}
+        />
+      </TouchableOpacity>
     </View>
   );
 };
 
 Header.propTypes = {
-  textStyle: propTypes.style,
-  imageStyle: propTypes.style,
-  iconStyle: propTypes.style,
+  textStyle: ViewPropTypes.style,
+  imageStyle: ViewPropTypes.style,
+  iconStyle: ViewPropTypes.style,
 };
-
-export { Header };

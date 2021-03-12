@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { COLORS } from "../../shared/colors";
-import { fScale } from "../../utils";
+import { fScale, vScale, hScale } from "../../utils";
 
 const styles = StyleSheet.create({
   container: {
@@ -14,8 +14,31 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   error: {
-    fontSize: fScale(20),
+    fontSize: fScale(18),
     color: COLORS.white,
+    width: hScale(300),
+    textAlign: "center",
+  },
+  card: {
+    marginVertical: vScale(5),
+  },
+  image: {
+    width: hScale(350),
+    height: vScale(100),
+    justifyContent: "flex-end",
+    borderRadius: vScale(20),
+    overflow: "hidden",
+  },
+  nameContainer: {
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    alignItems: "center",
+    justifyContent: "center",
+    height: vScale(30),
+  },
+  name: {
+    color: COLORS.white,
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });
 

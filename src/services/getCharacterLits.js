@@ -1,7 +1,7 @@
 import axios from "axios";
 import { PUBLIC_KEY, TIMESTAMP, HASH_KEY, baseUrl } from "../config";
 
-export const getMoviesLits = async () => {
+export const getCharacterLits = async ({ offset }) => {
   let requestData = {
     characters: [],
     error: false,
@@ -10,8 +10,9 @@ export const getMoviesLits = async () => {
     apikey: PUBLIC_KEY,
     ts: TIMESTAMP,
     hash: HASH_KEY,
+    offset,
+    limit: 10,
   };
-
   try {
     const { data } = await axios.get(`${baseUrl}/v1/public/characters`, {
       params,
@@ -25,6 +26,6 @@ export const getMoviesLits = async () => {
     }
     return { ...requestData, error: true };
   } catch (error) {
-    return { error: true };
+    return { error: error.response.data.message };
   }
 };
