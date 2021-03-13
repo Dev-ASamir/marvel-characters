@@ -13,7 +13,7 @@ export const CharacterCard = ({ item }) => {
         source={IMAGES.imagePlaceholder}
         resizeMode="stretch"
       ></Image>
-      <Text style={styles.title}>{item.title}</Text>
+      <Text style={styles.title}>{item.name}</Text>
     </View>
   );
 };

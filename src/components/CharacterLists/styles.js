@@ -10,19 +10,22 @@ const styles = StyleSheet.create({
     marginTop: vScale(20),
   },
   listContentContainer: {
-    flex: 1,
     paddingBottom: vScale(5),
   },
   footer: {
-    height: vScale(50),
+    height: vScale(100),
+    justifyContent: "center",
+    alignItems: "center",
   },
   noDataContainer: {
     paddingVertical: vScale(3),
     justifyContent: "center",
     alignItems: "center",
+    // flex: 1,
   },
   noDataText: {
     fontSize: fScale(18),
+    color: COLORS.white,
   },
 });
 

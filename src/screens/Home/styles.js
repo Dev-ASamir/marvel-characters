@@ -5,13 +5,14 @@ import { fScale, vScale, hScale } from "../../utils";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    // alignItems: "center",
     backgroundColor: COLORS.dark,
   },
   content: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: COLORS.dark,
   },
   error: {
     fontSize: fScale(18),
@@ -28,6 +29,17 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     borderRadius: vScale(20),
     overflow: "hidden",
+  },
+  spinner: {
+    width: hScale(350),
+    height: vScale(100),
+    alignSelf: "center",
+  },
+  imageLoading: {
+    backgroundColor: COLORS.white,
+    width: hScale(350),
+    height: vScale(100),
+    justifyContent: "center",
   },
   nameContainer: {
     backgroundColor: "rgba(0, 0, 0, 0.5)",

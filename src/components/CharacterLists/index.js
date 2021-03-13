@@ -7,7 +7,7 @@ import {
   Text,
   FlatList,
 } from "react-native";
-import { IMAGES } from "../../shared";
+import { COLORS, IMAGES } from "../../shared";
 import { Trans } from "../../utils";
 import { Image } from "react-native-elements";
 import styles from "./styles";
@@ -25,6 +25,9 @@ export const CharacterLists = ({
   renderItem,
   ...props
 }) => {
+  console.log("====================================");
+  console.log("DDD", disableLoading);
+  console.log("====================================");
   return (
     <FlatList
       {...props}
@@ -39,9 +42,9 @@ export const CharacterLists = ({
       data={characters}
       renderItem={renderItem}
       ListFooterComponent={() =>
-        disableLoading ? null : (
+        !disableLoading ? null : (
           <View style={styles.footer}>
-            <ActivityIndicator size="small" />
+            <ActivityIndicator size="small" color={COLORS.white} />
           </View>
         )
       }

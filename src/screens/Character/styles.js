@@ -55,6 +55,15 @@ const styles = StyleSheet.create({
   descText: {
     color: COLORS.white,
   },
+  noDataText: {
+    color: COLORS.white,
+    marginHorizontal: hScale(10),
+  },
+  spinner: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 
 export default styles;

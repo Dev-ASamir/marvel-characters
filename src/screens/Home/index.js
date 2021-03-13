@@ -15,53 +15,54 @@ const Home = () => {
   const [error, setError] = useState("");
   const [charactersData, setCharactersData] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
-  const [count, setCount] = useState(0);
+  const [offset, setOffset] = useState(1);
 
   const navigation = useNavigation();
 
   useEffect(() => {
     setLoading(true);
     onLoad();
-  }, [charactersData]);
+  }, []);
 
   const onLoad = async () => {
-    const data = await getCharacterLits({ offset: 0 });
+    const data = await getCharacterLits({ offset });
+
     if (data.error) {
       setError(data.error);
       setLoading(false);
     } else {
       setCharactersData(data.characters);
-      setCount(data.characters.length);
       setLoading(false);
     }
   };
-  const loadMore = async (offset) => {
+  const loadMore = async () => {
     setRefreshing(true);
-    const moreCharacters = await getCharacterLits({ offset });
+    const moreCharacters = await getCharacterLits({ offset: offset + 1 });
     setRefreshing(false);
-    setCount(moreCharacters.characters.length);
-    await setCharactersData([...charactersData, ...moreCharacters]);
-  };
-
-  const _onRefresh = async () => {
-    const data = await getCharacterLits({ offset: 0 });
-    setCount(data.characters.length);
-    setCharactersData(data);
+    await setCharactersData(moreCharacters.characters);
   };
 
   const _renderItem = ({ item }) => {
     return (
       <TouchableOpacity
         style={styles.card}
-        onPress={() => navigation.navigate("Character")}
+        onPress={() => navigation.navigate("Character", { item })}
       >
         <Image
+          source={
+            `${item.thumbnail.path}.${item.thumbnail.extension}`
+              ? { uri: `${item.thumbnail.path}.${item.thumbnail.extension}` }
+              : IMAGES.imagePlaceholder
+          }
           style={styles.image}
-          source={IMAGES.imagePlaceholder}
-          resizeMode="stretch"
+          PlaceholderContent={
+            <View style={styles.imageLoading}>
+              <ActivityIndicator />
+            </View>
+          }
         >
           <View style={styles.nameContainer}>
-            <Text style={styles.name}>{item.title}</Text>
+            <Text style={styles.name}>{item.name}</Text>
           </View>
         </Image>
       </TouchableOpacity>
@@ -70,25 +71,24 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <Header />
-      <View style={styles.content}>
-        {loading ? (
+      {loading ? (
+        <View style={styles.content}>
           <ActivityIndicator style={styles.spinner} size={"large"} />
-        ) : error ? (
-          <Text style={styles.error}>{error}</Text>
-        ) : (
-          <CharacterLists
-            containerStyle={styles.contentContainer}
-            loading={loading}
-            refreshing={refreshing}
-            onRefresh={_onRefresh}
-            renderItem={_renderItem}
-            onEndReached={() => loadMore(+5)}
-            characters={dummyData} //charactersData
-            disableLoading={count == charactersData.length}
-            syncPosts={onLoad}
-          />
-        )}
-      </View>
+        </View>
+      ) : error ? (
+        <Text style={styles.error}>{error}</Text>
+      ) : (
+        <CharacterLists
+          containerStyle={styles.contentContainer}
+          loading={loading}
+          // refreshing={refreshing}
+          renderItem={_renderItem}
+          onMomentumScrollEnd={() => loadMore()}
+          characters={charactersData} //charactersData
+          disableLoading={refreshing}
+          syncPosts={onLoad}
+        />
+      )}
     </View>
   );
 };

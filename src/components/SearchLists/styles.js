@@ -17,12 +17,13 @@ const styles = StyleSheet.create({
     height: vScale(50),
   },
   noDataContainer: {
-    paddingVertical: vScale(3),
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
   noDataText: {
     fontSize: fScale(18),
+    color: COLORS.white,
   },
 });
 

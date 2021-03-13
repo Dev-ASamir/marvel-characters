@@ -10,6 +10,17 @@ const styles = StyleSheet.create({
   searchContainer: {
     marginTop: vScale(50),
   },
+  spinner: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  error: {
+    color: COLORS.white,
+    fontSize: fScale(18),
+    width: hScale(300),
+    textAlign: "center",
+  },
 });
 
 export default styles;
