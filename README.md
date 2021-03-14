@@ -75,3 +75,6 @@ You will need to make one more step to install pods dependencies, run the follow
     "redux-thunk": "^2.3.0"
 
     Also I am using eslint and prettier for better code formatting
+
+![alt text](https://ibb.co/kKNnF7p)
+
