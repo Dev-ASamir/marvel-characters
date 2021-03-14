@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     marginTop: vScale(20),
     marginHorizontal: hScale(10),
     fontWeight: "bold",
+    textAlign: "left",
   },
   icon: {
     height: vScale(12),
@@ -59,6 +60,7 @@ const styles = StyleSheet.create({
     paddingBottom: vScale(5),
     color: COLORS.pink,
     fontWeight: "bold",
+    textAlign: "left",
   },
   descText: {
     color: COLORS.white,

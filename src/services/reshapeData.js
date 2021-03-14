@@ -62,12 +62,12 @@ export const reshapeData = async ({ item }) => {
   const data = [
     {
       id: 1,
-      listTitle: "Comics",
+      listTitle: "comics",
       list: comicsArr,
     },
-    { id: 2, listTitle: "Events", list: eventsArr },
-    { id: 3, listTitle: "Series", list: seriesArr },
-    { id: 4, listTitle: "Stories", list: storiesArr },
+    { id: 2, listTitle: "events", list: eventsArr },
+    { id: 3, listTitle: "series", list: seriesArr },
+    { id: 4, listTitle: "stories", list: storiesArr },
   ];
   return data;
 };

@@ -9,4 +9,8 @@ module.exports = {
     "Are you sure to reload the application to change the language?",
   ok: "Okay",
   description: "Description",
+  comics: "Comics",
+  stories: "Stories",
+  events: "Events",
+  series: "Series",
 };

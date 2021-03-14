@@ -8,4 +8,8 @@ module.exports = {
   changelang_msg: "سيتطلب تغير اللغة الي اعادة تشتغل التطبيق ، هل انت موافق ؟",
   ok: "موافق",
   description: "الوصف",
+  comics: "كاريكاتير",
+  stories: "قصص",
+  events: "أحداث",
+  series: "مسلسلات",
 };

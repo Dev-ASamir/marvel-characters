@@ -77,29 +77,30 @@ const Character = () => {
               )}
             </View>
             <ScrollView>
-              {charactersData.map((i) => (
-                <View key={i.id}>
-                  <Text style={styles.header}>{i.listTitle}</Text>
-                  <FlatList
-                    key={i}
-                    data={i.list}
-                    renderItem={({ item }) => (
-                      <CharacterCard item={item} listTitle={i.listTitle} />
-                    )}
-                    horizontal={true}
-                    ListEmptyComponent={() => (
-                      <View style={styles.noDataContainer}>
-                        <Text style={styles.noDataText}>
-                          {Trans("noResult")}
-                        </Text>
-                      </View>
-                    )}
-                    contentContainerStyle={styles.contentContainer}
-                    keyExtractor={(item) => item.id}
-                    showsHorizontalScrollIndicator={false}
-                  />
-                </View>
-              ))}
+              {charactersData &&
+                charactersData.map((i) => (
+                  <View key={i.id}>
+                    <Text style={styles.header}>{Trans(i.listTitle)}</Text>
+                    <FlatList
+                      key={i}
+                      data={i.list}
+                      renderItem={({ item }) => (
+                        <CharacterCard item={item} listTitle={i.listTitle} />
+                      )}
+                      horizontal={true}
+                      ListEmptyComponent={() => (
+                        <View style={styles.noDataContainer}>
+                          <Text style={styles.noDataText}>
+                            {Trans("noResult")}
+                          </Text>
+                        </View>
+                      )}
+                      contentContainerStyle={styles.contentContainer}
+                      keyExtractor={(item) => item.id}
+                      showsHorizontalScrollIndicator={false}
+                    />
+                  </View>
+                ))}
             </ScrollView>
           </>
         )}
