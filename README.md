@@ -76,9 +76,7 @@ You will need to make one more step to install pods dependencies, run the follow
 
     Also I am using eslint and prettier for better code formatting
 
-![Home](https://i.ibb.co/D40XnJN/Simulator-Screen-Shot-i-Phone-11-2021-03-14-at-18-30-19.png)
-![Details](https://i.ibb.co/8rvXLDN/Simulator-Screen-Shot-i-Phone-11-2021-03-14-at-18-30-40.png)
-![Search](https://i.ibb.co/Ryw1CSQ/Simulator-Screen-Shot-i-Phone-11-2021-03-14-at-18-30-52.png)
+![Home](https://i.ibb.co/J5PM8kV/Simulator-Screen-Shot-i-Phone-11-2021-03-14-at-19-00-43.png) ![Details](https://i.ibb.co/8rvXLDN/Simulator-Screen-Shot-i-Phone-11-2021-03-14-at-18-30-40.png) ![Search](https://i.ibb.co/Ryw1CSQ/Simulator-Screen-Shot-i-Phone-11-2021-03-14-at-18-30-52.png)
 
 
 
