@@ -1,33 +1,16 @@
 import propTypes from "prop-types";
 import React from "react";
-import {
-  View,
-  ViewPropTypes,
-  ActivityIndicator,
-  Text,
-  FlatList,
-} from "react-native";
-import { COLORS, IMAGES } from "../../shared";
+import { View, ActivityIndicator, Text, FlatList } from "react-native";
+import { COLORS } from "../../shared";
 import { Trans } from "../../utils";
-import { Image } from "react-native-elements";
 import styles from "./styles";
 
 export const CharacterLists = ({
-  textStyle,
-  containerStyle,
-  iconStyle,
-  imageStyle,
-  onPress,
   disableLoading,
   characters,
-  syncPosts,
-  disableInitialLoader,
   renderItem,
   ...props
 }) => {
-  console.log("====================================");
-  console.log("DDD", disableLoading);
-  console.log("====================================");
   return (
     <FlatList
       {...props}
@@ -57,15 +40,7 @@ export const CharacterLists = ({
 };
 
 CharacterLists.propTypes = {
-  item: propTypes.object,
-  textStyle: ViewPropTypes.style,
-  imageStyle: ViewPropTypes.style,
-  iconStyle: ViewPropTypes.style,
-  onPress: propTypes.func,
   characters: propTypes.array,
-  loadMore: propTypes.func,
   disableLoading: propTypes.bool,
-  syncPosts: propTypes.func,
   renderItem: propTypes.func,
-  containerStyle: ViewPropTypes.style,
 };

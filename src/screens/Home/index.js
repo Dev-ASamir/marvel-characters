@@ -4,18 +4,16 @@ import { Text, View, TouchableOpacity } from "react-native";
 import { getCharacterLits } from "../../services";
 import { ActivityIndicator } from "react-native";
 import { Image } from "react-native-elements";
-import { Trans } from "../../utils";
 import { IMAGES } from "../../shared";
 import { useNavigation } from "@react-navigation/native";
-import { Header, CharacterCard, CharacterLists } from "../../components";
-import { dummyData } from "./dummyData";
+import { Header, CharacterLists } from "../../components";
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [charactersData, setCharactersData] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
-  const [offset, setOffset] = useState(1);
+  const [limit, setLimit] = useState(1);
 
   const navigation = useNavigation();
 
@@ -25,7 +23,7 @@ const Home = () => {
   }, []);
 
   const onLoad = async () => {
-    const data = await getCharacterLits({ offset });
+    const data = await getCharacterLits({ limit });
 
     if (data.error) {
       setError(data.error);
@@ -33,11 +31,13 @@ const Home = () => {
     } else {
       setCharactersData(data.characters);
       setLoading(false);
+      setError(data.error);
     }
   };
   const loadMore = async () => {
     setRefreshing(true);
-    const moreCharacters = await getCharacterLits({ offset: offset + 1 });
+    setLimit(limit + 1);
+    const moreCharacters = await getCharacterLits({ limit });
     setRefreshing(false);
     await setCharactersData(moreCharacters.characters);
   };
@@ -46,11 +46,11 @@ const Home = () => {
     return (
       <TouchableOpacity
         style={styles.card}
-        onPress={() => navigation.navigate("Character", { item })}
+        onPress={() => navigation.push("Character", { item })}
       >
         <Image
           source={
-            `${item.thumbnail.path}.${item.thumbnail.extension}`
+            item.thumbnail
               ? { uri: `${item.thumbnail.path}.${item.thumbnail.extension}` }
               : IMAGES.imagePlaceholder
           }
@@ -76,15 +76,15 @@ const Home = () => {
           <ActivityIndicator style={styles.spinner} size={"large"} />
         </View>
       ) : error ? (
-        <Text style={styles.error}>{error}</Text>
+        <View style={styles.content}>
+          <Text style={styles.error}>{error}</Text>
+        </View>
       ) : (
         <CharacterLists
-          containerStyle={styles.contentContainer}
           loading={loading}
-          // refreshing={refreshing}
           renderItem={_renderItem}
           onMomentumScrollEnd={() => loadMore()}
-          characters={charactersData} //charactersData
+          characters={charactersData}
           disableLoading={refreshing}
           syncPosts={onLoad}
         />

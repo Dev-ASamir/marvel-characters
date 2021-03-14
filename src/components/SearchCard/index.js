@@ -9,7 +9,7 @@ export const SearchCard = ({ item, onPress }) => (
   <TouchableOpacity onPress={onPress} style={styles.container}>
     <Image
       source={
-        `${item.thumbnail.path}.${item.thumbnail.extension}`
+        item.thumbnail
           ? { uri: `${item.thumbnail.path}.${item.thumbnail.extension}` }
           : IMAGES.imagePlaceholder
       }

@@ -5,8 +5,6 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import Store from "./redux/store";
 
-import "react-native-gesture-handler";
-
 const App = () => {
   return (
     <Provider store={Store.store}>

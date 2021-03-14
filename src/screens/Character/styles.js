@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, I18nManager } from "react-native";
 import { COLORS } from "../../shared";
 import { fScale, hScale, vScale } from "../../utils";
 
@@ -15,6 +15,13 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: vScale(10),
     borderBottomRightRadius: vScale(10),
     overflow: "hidden",
+  },
+  imageLoading: {
+    height: vScale(200),
+    width: hScale(375),
+    backgroundColor: COLORS.white,
+    justifyContent: "center",
+    alignItems: "center",
   },
   back: {
     backgroundColor: "rgba(0,0,0,0.5)",
@@ -36,6 +43,7 @@ const styles = StyleSheet.create({
     height: vScale(12),
     width: hScale(12),
     tintColor: COLORS.white,
+    transform: [{ rotate: I18nManager.isRTL ? "180deg" : "360deg" }],
   },
   content: {
     marginHorizontal: hScale(10),

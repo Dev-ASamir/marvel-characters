@@ -13,11 +13,12 @@ const styles = StyleSheet.create({
     borderRadius: vScale(10),
     overflow: "hidden",
   },
-  nameContainer: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    alignItems: "center",
+  imageLoading: {
+    width: hScale(100),
+    height: vScale(100),
+    backgroundColor: COLORS.white,
     justifyContent: "center",
-    height: vScale(40),
+    alignItems: "center",
   },
   title: {
     color: COLORS.white,

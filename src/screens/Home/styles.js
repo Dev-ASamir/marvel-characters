@@ -5,7 +5,7 @@ import { fScale, vScale, hScale } from "../../utils";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: "center",
+    alignItems: "center",
     backgroundColor: COLORS.dark,
   },
   content: {

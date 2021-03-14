@@ -5,4 +5,8 @@ module.exports = {
   cancel: "Cancel",
   searchPlaceholder: "Search for a character...",
   noResult: "No result found",
+  changelang_msg:
+    "Are you sure to reload the application to change the language?",
+  ok: "Okay",
+  description: "Description",
 };

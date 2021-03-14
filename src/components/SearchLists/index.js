@@ -3,6 +3,7 @@ import React from "react";
 import { FlatList } from "react-native";
 import { SearchCard } from "../SearchCard";
 import { useNavigation } from "@react-navigation/native";
+import styles from "./styles";
 
 export const SearchLists = ({ data }) => {
   const navigation = useNavigation();
@@ -15,6 +16,7 @@ export const SearchLists = ({ data }) => {
           onPress={() => navigation.navigate("Character", { item })}
         />
       )}
+      contentContainerStyle={styles.contentContainer}
       keyExtractor={(item) => item.id}
       showsVerticalScrollIndicator={false}
     />
@@ -22,5 +24,5 @@ export const SearchLists = ({ data }) => {
 };
 
 SearchLists.propTypes = {
-  data: propTypes.array,
+  data: propTypes.bool,
 };

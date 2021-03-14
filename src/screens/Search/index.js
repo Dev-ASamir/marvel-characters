@@ -1,17 +1,16 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles";
 import { onSearchCharacter } from "../../services";
 import { useNavigation } from "@react-navigation/native";
-import { ImageBackground, View, ActivityIndicator } from "react-native";
+import { ImageBackground, View, Text, ActivityIndicator } from "react-native";
 import { IMAGES } from "../../shared";
 import { SearchBar, SearchLists } from "../../components";
-import { dummyData } from "./dummyData";
 
 const Search = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [query, setQuery] = useState("");
-  const [requestData, setRequestData] = useState([]);
+  const [requestData, setRequestData] = useState();
   const navigation = useNavigation();
 
   // To reset the request data before the next search
@@ -26,6 +25,7 @@ const Search = () => {
       setError(requestData.error);
       setLoading(false);
     } else {
+      setError(requestData.error);
       setRequestData(requestData.characters);
       setLoading(false);
     }
@@ -47,7 +47,6 @@ const Search = () => {
           onChangeText={(value) => onChangeText(value)}
         />
       </View>
-
       {loading ? (
         <View style={styles.spinner}>
           <ActivityIndicator size={"large"} />

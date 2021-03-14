@@ -19,12 +19,19 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: vScale(15),
     overflow: "hidden",
   },
-
+  imageLoading: {
+    width: hScale(100),
+    height: vScale(80),
+    backgroundColor: COLORS.white,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   name: {
     color: COLORS.white,
     fontSize: fScale(18),
     fontWeight: "bold",
     paddingStart: hScale(15),
+    width: hScale(200),
   },
 });
 

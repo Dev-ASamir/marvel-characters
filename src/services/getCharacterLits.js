@@ -1,17 +1,18 @@
 import axios from "axios";
 import { PUBLIC_KEY, TIMESTAMP, HASH_KEY, baseUrl } from "../config";
+import { Trans } from "../utils";
 
-export const getCharacterLits = async ({ offset }) => {
+export const getCharacterLits = async ({ limit }) => {
   let requestData = {
     characters: [],
     error: false,
   };
-  let maxLimit = offset * 5;
+  let maxLimit = limit * 4;
   const params = {
     apikey: PUBLIC_KEY,
     ts: TIMESTAMP,
     hash: HASH_KEY,
-    limit: maxLimit < 30 ? maxLimit : 20,
+    limit: maxLimit,
   };
   try {
     const { data } = await axios.get(`${baseUrl}/v1/public/characters`, {
@@ -39,7 +40,6 @@ export const onSearchCharacter = async ({ query }) => {
     apikey: PUBLIC_KEY,
     ts: TIMESTAMP,
     hash: HASH_KEY,
-    name: query,
   };
   try {
     const { data } = await axios.get(`${baseUrl}/v1/public/characters`, {
@@ -50,19 +50,13 @@ export const onSearchCharacter = async ({ query }) => {
         characters: data.data.results,
         error: false,
       };
-      // console.log("====================================");
-      // console.log("requestDataquery", requestData);
-      // console.log("====================================");
-      // const { characters } = requestData;
-      // for (var i = 0; i < characters.length; i++) {
-      //   console.log("requestData", characters[i].name);
-      //   if (characters[i].name.includes(query)) {
-      //     console.log("====================================");
-      //     console.log("requestDataBBBB", characters[i]);
-      //     console.log("====================================");
-      //     return characters[i];
-      //   }
-      // }
+      const { characters } = requestData;
+
+      const filterCharacters = characters.filter((i) => i.name.includes(query));
+      requestData = {
+        characters: filterCharacters,
+        error: filterCharacters.length === 0 ? Trans("noResult") : false,
+      };
       return requestData;
     }
 

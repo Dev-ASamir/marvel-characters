@@ -5,6 +5,7 @@ import {
   ViewPropTypes,
   TouchableOpacity,
   Image,
+  Alert,
 } from "react-native";
 import { ICONS, IMAGES } from "../../shared";
 import { Trans } from "../../utils";
@@ -26,11 +27,34 @@ export const Header = ({
     lang: state.lang,
   }));
   let selected_lang = lang === "en" ? "ar" : "en";
+
+  const setLang = () => {
+    if (lang !== selected_lang) {
+      Alert.alert(
+        "",
+        Trans("changelang_msg"),
+        [
+          {
+            text: Trans("ok"),
+            onPress: () => dispatch(applyLanguage(selected_lang)),
+          },
+          {
+            text: Trans("cancel"),
+            onPress: () => {},
+            style: "destructive",
+          },
+        ],
+        { cancelable: false }
+      );
+    }
+  };
   return (
     <View style={[styles.container, containerStyle]}>
       <TouchableOpacity
         activeOpacity={0.7}
-        onPress={() => dispatch(applyLanguage(selected_lang))}
+        onPress={() => {
+          setLang();
+        }}
       >
         <Text style={[styles.text, textStyle]}>{Trans("en")}</Text>
       </TouchableOpacity>
@@ -51,6 +75,7 @@ export const Header = ({
 };
 
 Header.propTypes = {
+  containerStyle: ViewPropTypes.style,
   textStyle: ViewPropTypes.style,
   imageStyle: ViewPropTypes.style,
   iconStyle: ViewPropTypes.style,

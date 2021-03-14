@@ -1,9 +1,8 @@
 import propTypes from "prop-types";
 import React from "react";
-import { Pressable, View, Text, TextInput } from "react-native";
-import Icon from "react-native-vector-icons/Entypo";
-import { COLORS } from "../../shared";
-import { Trans, vScale } from "../../utils";
+import { Pressable, View, Text, Image, TextInput } from "react-native";
+import { COLORS, ICONS } from "../../shared";
+import { Trans } from "../../utils";
 import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
@@ -13,11 +12,10 @@ export const SearchBar = ({ onPress, onChangeText, value }) => {
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-        <Icon
-          name="magnifying-glass"
-          onPress={onPress}
-          size={vScale(20)}
-          color={COLORS.white}
+        <Image
+          style={styles.icon}
+          source={ICONS.magnifyingGlass}
+          resizeMode={"contain"}
         />
         <TextInput
           style={styles.input}

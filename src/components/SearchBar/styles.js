@@ -27,6 +27,11 @@ const styles = StyleSheet.create({
     marginStart: hScale(10),
     fontWeight: "bold",
   },
+  icon: {
+    width: hScale(15),
+    height: vScale(15),
+    tintColor: COLORS.white,
+  },
 });
 
 export default styles;
